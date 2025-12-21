@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+venv/
+user_histories.json
+knowledge_base.json
