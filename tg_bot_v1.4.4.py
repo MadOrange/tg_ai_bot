@@ -44,12 +44,12 @@ giga_client = GigaChat(
 # --- 2. Санитизация пользовательского ввода и загрузка базы знаний. ---
 def sanitize_user_input(text: str, max_length: int = 2000) -> str:
     """Очищает пользовательский ввод от инъекций и ограничивает длину."""
-    # 1. Ограничение длины
+    # 2.1. Ограничение длины
     if len(text) > max_length:
         text = text[:max_length]
         return text + " [сообщение сокращено]"
     
-    # 2. Жёсткая блокировка инъекций
+    # 2.2. Жёсткая блокировка инъекций
     injection_patterns = [
         r"(?i)игнорируй.*(инструкци|указан)",
         r"(?i)забудь.*(предыдущ|раньш)",
@@ -73,16 +73,13 @@ def sanitize_user_input(text: str, max_length: int = 2000) -> str:
     
     return text.strip()
     
- 
-
-
+	# 2.3. Загрузка базы данных
 def load_knowledge_base() -> dict:
     """Загружает базу знаний из JSON-файла."""
     if KNOWLEDGE_FILE.exists():
         with open(KNOWLEDGE_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
     return {}
-
 
 
 def search_in_knowledge_base(query: str) -> str:
@@ -97,17 +94,17 @@ def search_in_knowledge_base(query: str) -> str:
     query_lower = query.lower()
     results = []
     
-    # 1. Проверяем имя 
+    # 2.3.1. Проверяем имя 
 #   if any(name_word in query_lower for name_word in ["байков", "дмитрий", "дима"]):
 #        results.append(f"👤 Имя: {knowledge['owner_profile']['name']}")
     
-    # 2. Проверяем профессиональные темы
+    # 2.3.2. Проверяем профессиональные темы
     if any(prof_word in query_lower for prof_word in ["кибербезопасност", "ит", "безопасност", "сбер", "банк", "работа"]):
         results.append("💼 Профессиональная деятельность:")
         for expertise in knowledge['professional_expertise']:
             results.append(f"  • {expertise['domain']}: {expertise['details']}")
     
-    # 3. Проверяем хобби
+    # 2.3.3. Проверяем хобби
     hobby_keywords = {
         "велосипед": "велотуризм",
         "туризм": "велотуризм",
@@ -134,7 +131,7 @@ def search_in_knowledge_base(query: str) -> str:
                     results.append(f"  • {category['category']}: {', '.join(category['items'][:2])}")
                     break
     
-    # 4. Если запрос общий "о Дмитрие", "кто он"
+    # 3.4. Если запрос общий "о Дмитрие", "кто он"
     if any(general_word in query_lower for general_word in ["кто он", "о дмитрие", "расскажи о нем", "его интересы"]):
         results.append(f"👤 {knowledge['owner_profile']['name']}")
 #        results.append(f"📍 {knowledge['owner_profile']['location']}")
@@ -337,8 +334,7 @@ async def get_ai_response(user_id: int, user_text: str) -> str:
 
 """
 
-
-        
+       
         messages = []
         # Всегда начинаем с обновленного системного промпта
         messages.append(Messages(role=MessagesRole.SYSTEM, content=system_message_content))
