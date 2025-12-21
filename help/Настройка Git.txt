@@ -1,0 +1,64 @@
+Настройка Git и первый commit
+git --version
+#Настройка
+# Укажите своё имя (будет в коммитах)
+git config --global user.name "MadOrange"
+
+# Укажите email (такой же как на GitHub)
+git config --global user.email "ваш_email@example.com"
+
+# Можно включить цветной вывод
+git config --global color.ui auto
+#Первый коммит в ваш репозиторий
+# 1. Инициализация Git в папке проекта
+git init
+
+# 2. Проверьте статус (покажет файлы, которые можно добавить)
+git status
+
+# 3. Добавьте ВСЕ файлы (кроме тех, что в .gitignore)
+git add .
+
+# 4. Сделайте первый коммит
+git commit -m "Initial commit: AI Telegram bot with knowledge base and security"
+
+# 5. Привяжите ваш репозиторий на GitHub
+git remote add origin https://github.com/MadOrange/tg_ai_bot.git
+
+# 6. Отправьте код на GitHub
+git push -u origin main
+
+
+
+Команда	Что делает	Когда использовать
+git status	Показывает текущее состояние	Всегда перед add или commit
+git diff	Показывает изменения в файлах	Чтобы увидеть, что именно поменяли
+git log	Показывает историю коммитов	Чтобы посмотреть, что было сделано
+git restore --staged файл	Отменяет git add для файла	Если случайно добавили лишнее
+ 
+Пошаговая инструкция: как подключиться к проекту на другом компьютере
+Допустим, вы садитесь за домашний компьютер и хотите продолжить работу.
+
+Шаг 1: Клонирование репозитория
+Откройте терминал в удобной папке (например, D:\Projects\) и выполните:
+
+bash
+git clone https://github.com/MadOrange/tg_ai_bot.git
+git clone --template=my_ai_assistant https://github.com/MadOrange/tg_ai_bot.git
+Эта команда скачает весь проект и историю изменений с GitHub в папку tg_ai_bot.
+
+Шаг 2: Восстановление рабочего окружения
+Теперь нужно создать виртуальное окружение и установить зависимости, как на первом компьютере:
+
+bash
+# Перейти в папку проекта
+cd tg_ai_bot
+
+# Создать виртуальное окружение
+python -m venv venv
+
+# Активировать его (Windows)
+venv\Scripts\activate
+
+# Установить все зависимости из requirements.txt
+pip install -r requirements.txt
