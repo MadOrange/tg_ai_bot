@@ -1,4 +1,0 @@
-Запуск окружения
-python -m venv venv
-Запуск Бота
-python tg_bot.py

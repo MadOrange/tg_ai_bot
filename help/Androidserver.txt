@@ -66,3 +66,29 @@
 Помните, что при переносе на любой новый сервер нужно будет повторно настроить пути к файлам (например, knowledge_base.json) и убедиться, что все переменные окружения загружаются корректно.
 
 Какой из этих путей кажется вам более подходящим для дальнейших шагов?
+
+
+How to
+
+# Установите SSH-сервер
+sudo apt install openssh-server -y
+#Удаление ненужного сервера
+sudo apt remove --purge openssh-server openssh-sftp-server ssh-import-id -y
+sudo apt autoremove --purge -y && sudo apt clean
+# Запустите сервис
+sudo service ssh start
+# Узнайте IP-адрес (обычно 172.x.x.x или 10.x.x.x)
+hostname -I
+Установка сетевых утилит sudo apt install iproute2 iputils-ping net-tools -y
+Установка Python и Git
+sudo apt update
+sudo apt install python3 python3-pip -y
+sudo apt install git -y
+Клонируем проект git clone https://github.com/MadOrange/tg_ai_bot
+
+# Установите SSH-сервер
+sudo apt install openssh-server -y
+# Запустите сервис
+sudo service ssh start
+# Узнайте IP-адрес (обычно 172.x.x.x или 10.x.x.x)
+hostname -I

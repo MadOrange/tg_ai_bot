@@ -291,8 +291,6 @@ async def get_ai_response(user_id: int, user_text: str) -> str:
             add_to_history(user_id, "assistant", response_text)
             return response_text
     
-    # 🔥 ДАЛЕЕ ВАШ СУЩЕСТВУЮЩИЙ КОД (добавление в историю, промпт, запрос к GigaChat)
-    add_to_history(user_id, "user", user_text)
     
     # ТОЛЬКО ЕСЛИ В БАЗЕ ЗНАНИЙ НИЧЕГО НЕ НАЙДЕНО — идём к GigaChat
     add_to_history(user_id, "user", user_text)
