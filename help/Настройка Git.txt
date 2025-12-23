@@ -28,7 +28,10 @@ git remote add origin https://github.com/MadOrange/tg_ai_bot.git
 # 6. Отправьте код на GitHub
 git push -u origin main
 
-
+#Обновить код из репозитария на компе где нет разработки
+git clone https://github.com/MadOrange/tg_ai_bot
+#Это работает надежнее
+git pull https://github.com/MadOrange/tg_ai_bot
 
 Команда	Что делает	Когда использовать
 git status	Показывает текущее состояние	Всегда перед add или commit
