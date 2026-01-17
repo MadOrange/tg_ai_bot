@@ -47,14 +47,6 @@
 
 How to
 
-# Установите SSH-сервер
-sudo apt install openssh-server -y
-#Удаление ненужного сервера
-sudo apt remove --purge openssh-server openssh-sftp-server ssh-import-id -y
-sudo apt autoremove --purge -y && sudo apt clean
-# Запустите сервис
-sudo service ssh start
-# Узнайте IP-адрес (обычно 172.x.x.x или 10.x.x.x)
 hostname -I
 #Установка сетевых утилит 
 sudo apt install iproute2 iputils-ping net-tools -y
@@ -63,8 +55,14 @@ apt update
 sudo apt install git -y
 sudo apt install python3 python3-pip -y   //Это под вопросом
 pip install -r requirements.txt
+
+#Клонируем проект 
+git clone https://github.com/MadOrange/tg_ai_bot
 #Запуск Бота 
 python3 tg_bot_v1.5.0.py
+#Обмен ключами ssh
+На локальном компьютере
+ssh-keygen 
+Скопировать публичный ключ и разместить его на в  authorized_keys на сервере.
 
-//Клонируем проект git clone https://github.com/MadOrange/tg_ai_bot
 
