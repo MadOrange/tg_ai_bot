@@ -76,6 +76,32 @@ OWNER_TELEGRAM_ID=123456789  # ID владельца для уведомлени
 3. Запуск
 bash
 python tg_bot_h2_v1.4.py
+
+3.1 Запуск в качестве службы
+
+Разместите файл ai-assistant.service в /etc/systemd/system/ai-assistant.service
+bash
+# Перезагрузите systemd
+sudo systemctl daemon-reload
+# Включите автозапуск
+sudo systemctl enable ai-assistant.service
+# Запустите службу
+sudo systemctl start ai-assistant.service
+# Проверьте статус
+sudo systemctl status ai-assistant.service
+
+3.1.1 Команды для управления службой
+# Просмотр логов
+sudo journalctl -u ai-assistant.service -f
+# Перезапуск бота
+sudo systemctl restart ai-assistant.service
+# Остановка
+sudo systemctl stop ai-assistant.service
+
+3.2 Запуск в качестве скрипта в фоне 
+chmod +x ~/start_bot.sh
+ ./start_bot.sh &
+
 🧪 Тестирование
 Базовые команды
 /start или /help - приветственное сообщение

@@ -1,0 +1,26 @@
+[Unit]
+Description=Telegram AI Assistant Bot
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+User=ubuntu
+WorkingDirectory=/home/ior4nge/tg_ai_bot
+ExecStart=/usr/bin/python3 /home/ior4nge/tg_ai_bot/tg_bot_v1.5.0.py
+EnvironmentFile=/home/ior4nge/tg_ai_bot/.env
+
+# Loggining
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-assistant
+
+# Setting for stable work
+ProtectSystem=strict
+ReadWritePaths=/home/ior4nge/tg_ai_bot
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
