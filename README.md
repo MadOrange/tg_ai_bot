@@ -68,6 +68,11 @@ pip install -r requirements.txt
 TELEGRAM_BOT_TOKEN=ваш_токен_бота_от_BotFather
 GIGACHAT_API_KEY=ваш_base64_ключ_от_GigaChat
 
+OWNER_TELEGRAM_ID=123456789  # ID владельца для уведомлений
+# OWNER_EMAIL=example@mail.com  # Закомментировано для будущего использования
+
+Спаравка: Где 123456789 - ваш Telegram ID (получить можно у @userinfobot)
+
 3. Запуск
 bash
 python tg_bot_h2_v1.4.py
