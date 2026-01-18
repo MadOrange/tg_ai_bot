@@ -60,7 +60,7 @@ start_bot() {
     print_info "Launching bot with nohup..."
     
     # Start bot with nohup (background, survives terminal close)
-    nohup "./$SCRIPT" > "$LOG_FILE" 2>&1 &
+    nohup setsid "./$SCRIPT" > "$LOG_FILE" 2>&1 < /dev/null &
     
     # Save monitor PID
     MONITOR_PID=$!
